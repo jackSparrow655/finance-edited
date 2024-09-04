@@ -26,6 +26,9 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
+        const {token} = data
+        localStorage.setItem("token", token)
+        console.log("data", data)
         if (data.err) {
           toast.current.show({severity:'error', summary: 'Error !', detail:data.err, life: 1000});
         }
